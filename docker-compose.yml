@@ -1,0 +1,18 @@
+version: '3'
+services:
+  #qgis-server without data
+  qgis-server-base:
+    image: qgis/qgis-server:ltr
+    container_name: qgis-server
+    ports:
+      - 8010:80
+    restart: "unless-stopped"
+    volumes:
+      - .data:/io/data
+  #qgis-server with default data
+  qgis-server-default-data:
+      build: .
+      container_name: qgis-server-default-data
+      ports:
+        - 8010:80
+      restart: "unless-stopped"
